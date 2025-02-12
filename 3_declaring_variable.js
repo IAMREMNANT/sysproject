@@ -47,7 +47,8 @@ console.log(name);
 let girfriend;
 console.log(girfriend);
 
-const girfriend2;
+const girfriend2 = 123;
+console.log(girfriend2);
 
 /** 
  * const는 선언과 동시에 할당을 해야한다.

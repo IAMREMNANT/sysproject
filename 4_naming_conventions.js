@@ -29,3 +29,6 @@ console.log(_yoJin);
  * ex) C# 마이크로소프트 계열의 언어에서 사용함 / 자주사용하지 않음.
  * 
  */
+
+const anYuJin = '안유진';
+console.log(anYuJin);
