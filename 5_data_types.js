@@ -93,4 +93,44 @@ console.log(typeof noInit);
  * null 타입
  * 
  * undefined와 마찬가지로 값이 없거나 뜻이나
+ * JS에서는 개발자가 명시적으로 없는 값으로 초기화할 때 사용한다.
  */
+let init = null;
+console.log(init);
+console.log(typeof init);
+
+/**
+ * Symbol 타입
+ * 
+ * 유일한 값을 만들 때 사용한다.
+ * 다른 프리미티브 값들과 다르게 Symbol 함수를
+ * 호출해서 사용한다.
+ */
+
+const test1 =  '1';
+const test2 =  '1';
+
+console.log(test1 === test2);
+
+const symbol1 = Symbol('1');
+const symbol2 = Symbol('1');
+
+console.log(symbol1 === symbol2);
+
+/**
+ * Object 타입
+ * JS는 모든 것이 Object이다.
+ * 
+ * Map
+ * 키: 밸류의 쌍으로 이루어져있다.
+ * key:value
+ */
+
+const dicitonary = { 
+    red: '빨강',
+    orange: '주황',
+    yellow: '노랑',
+};
+
+console.log(dicitonary);
+console.log(dicitionary['red'])
