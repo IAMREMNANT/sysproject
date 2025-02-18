@@ -133,4 +133,5 @@ const dicitonary = {
 };
 
 console.log(dicitonary);
-console.log(dicitionary['red'])
+console.log(dicitionary['red']);
+console.log(dicitionary['orange']);
