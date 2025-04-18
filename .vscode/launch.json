@@ -5,34 +5,27 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Run Main_Title",
-            "cwd": "flutterproject",
+            "name": "Run churchapp",
+            "cwd": "churchapp",
             "request": "launch",
             "type": "dart",
-            "program": "lib/Main_Title.dart"
-        },
+            "program": "lib/home.dart"
+        },        
         {
-            "name": "Run colum_row",
-            "cwd": "flutterproject",
-            "request": "launch",
-            "type": "dart",
-            "program": "lib/colum_row.dart"
-        },
-        {
-            "name": "Run Main_Title (profile mode)",
-            "cwd": "flutterproject",
+            "name": "Run churchapp (profile mode)",
+            "cwd": "churchapp",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile",
-            "program": "lib/Main_Title.dart"
+            "program": "lib/home.dart"
         },
         {
-            "name": "Run Main_Title (release mode)",
-            "cwd": "flutterproject",
+            "name": "Run churchapp (release mode)",
+            "cwd": "churchapp",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release",
-            "program": "lib/Main_Title.dart"
+            "program": "lib/home.dart"
         }
     ]
 }
