@@ -1,109 +1,31 @@
 import 'package:flutter/material.dart';
+// import 'package:churchapp/pages/home_page.dart'; // HomePage 직접 사용 안 함
+import 'package:churchapp/main_app_screen.dart'; // MainAppScreen import
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Church App',
+      title: '교회 앱', // 앱 타이틀
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-      ),
-      home: MainScreen(),
-    );
-  }
-}
-
-class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
-  
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Church App'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {
-              // 검색 기능 구현
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.person),
-            onPressed: () {
-              // 프로필 관련 기능 구현
-            },
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // 상단 메인배너. assets 폴더 내 img/Main Banner.png 파일을 불러옵니다.
-            Image.asset(
-              'img/MainBanner.png',
-              width: 412,
-              height: 280,
-            ),
-            const SizedBox(height: 10),
-            // 추가 콘텐츠 예시: 중앙에 환영 메시지
-            const Center(
-              child: Text(
-                'Welcome to our Church App!',
-                style: TextStyle(fontSize: 24),
-              ),
-            ),
-          ],
+        primarySwatch: Colors.blue, // 앱 전체 기본 테마 색상
+        visualDensity: VisualDensity.adaptivePlatformDensity, // 플랫폼에 따라 밀도 조정
+        fontFamily: 'Pretendard', // Pretendard 폰트 사용
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white, // 앱바 배경색 흰색 (이미지와 유사)
+          foregroundColor: Colors.black, // 앱바 아이콘/텍스트 색상 검정
+          elevation: 1, // 앱바 그림자
         ),
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text(
-                'Menu',
-                style: TextStyle(color: Colors.white, fontSize: 24),
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.home),
-              title: const Text('Home'),
-              onTap: () {
-                // 홈으로 이동
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.message),
-              title: const Text('Messages'),
-              onTap: () {
-                // 메시지 관련 동작
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('Settings'),
-              onTap: () {
-                // 설정 관련 동작
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
-      ),
-      // Removed duplicate body parameter
+      // 앱 시작 페이지를 MainAppScreen으로 설정
+      home: const MainAppScreen(),
+      debugShowCheckedModeBanner: false, // 디버그 배너 숨기기
     );
   }
 }
