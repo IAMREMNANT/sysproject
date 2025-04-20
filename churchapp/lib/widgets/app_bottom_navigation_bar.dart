@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-// 아래 페이지 import들은 이 위젯 자체에서는 사용하지 않으므로 제거합니다.
-// import 'package:churchapp/pages/administration_page.dart';
-// import 'package:churchapp/pages/church_intro_page.dart';
-// import 'package:churchapp/pages/nextgen_intro_page.dart';
-// import 'package:churchapp/pages/word_page.dart';
 
 class AppBottomNavigationBar extends StatelessWidget {
   final int selectedIndex;
