@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.8 # 이 버전 유지
   flip_card: ^0.6.0 # 이 버전 유지
+  syncfusion_flutter_pdfviewer: ^29.1.38 # PDF 뷰어 패키지 추가 (최신 버전 확인)
+  path_provider: ^2.1.5 # 파일 시스템 접근 패키지 추가 (최신 버전 확인)
 
   # 현재 SDK 버전 (^3.7.2)과 호환되는 webview_flutter 및 플랫폼별 구현체 패키지 버전
   # webview_flutter v4.3.0의 Dependencies 정보 기준 (pub.dev 확인)
@@ -35,8 +37,12 @@ flutter:
     - img/msg_250316.png
     - img/bus_schedule.png
     - img/church_logo.png
-    # 폰트 assets도 여기에 추가
+    - img/church_collage_placeholder.png
+    - img/pastor_photo.png
 
+    # <<< PDF 파일 폴더 경로 추가 >>>
+    - church_weekly/
+    
   fonts:
     - family: Pretendard
       fonts:

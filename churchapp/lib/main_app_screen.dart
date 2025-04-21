@@ -156,7 +156,7 @@ class MainAppScreenState extends State<MainAppScreen> {
       const ChurchIntroPage(), // index 2
       const NextgenIntroPage(), // index 3
       const AdministrationPage(), // index 4
-      const WorshipTimePage(), // index 5
+      const WorshipTimePage(showBanner: true), // index 5
       const ChurchWeeklyPage(), // index 6
       const ChurchNewsPage(), // index 7
       const DirectionsPage(), // index 8
@@ -209,8 +209,12 @@ class MainAppScreenState extends State<MainAppScreen> {
               Row(
                 children: [
                   // TODO: 실제 교회 로고 이미지 경로 및 크기 설정
+                  // 이미지 경로를 실제 프로젝트에 맞게 수정해야 합니다.
+                  // 예를 들어 'assets/images/church_logo.png'
+                  // 그리고 pubspec.yaml 파일의 assets 섹션에 등록해야 합니다.
                   Image.asset(
-                    '++img/church_logo.png', // 이미지 경로 확인 및 pubspec.yaml 등록
+                    // '++img/church_logo.png', // <- 이 경로를 수정하세요!
+                    'assets/images/church_logo.png', // 예시 경로
                     height: 40,
                     errorBuilder: (context, error, stackTrace) {
                       return const Icon(
@@ -370,37 +374,23 @@ class MainAppScreenState extends State<MainAppScreen> {
               ExpansionTile(
                 // 1 Depth 메뉴 헤더 (제목)
                 title: Container(
-                  // 이미지상 1 Depth 헤더는 하얀 배경에 텍스트만 있습니다.
-                  // ExpansionTile 기본 Padding이 있으므로 Container로 배경색 지정
-                  //color: Colors.white,
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 12.0,
-                  ), // 이미지상 패딩
+                  // ==== 여기를 수정했습니다 ====
+                  padding: const EdgeInsets.fromLTRB(16.0, 12.0, 0, 12.0), // 왼쪽 패딩 추가
+                  // ===========================
                   child: Text(
                     menuItem.title,
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      // ExpansionTile 기본 색상 외에 다른 색상 필요시 지정
                     ),
                   ),
                 ),
                 // 기본 ExpansionTile은 왼쪽 아이콘과 오른쪽 화살표가 있습니다.
                 // 이미지상 오른쪽 화살표만 있으므로 leading 위젯을 null로 지정
                 leading: null,
-                // 이미지상 오른쪽 화살표는 기본적으로 제공됩니다.
-                // trailing: Icon(Icons.chevron_right), // 기본 트레일링 아이콘 사용 또는 커스텀 가능
-
                 // 기본 ExpansionTile의 시각적 밀도 조정 (이미지와 유사하게)
                 visualDensity: VisualDensity.compact, // 더 작은 패딩
                 tilePadding: EdgeInsets.zero, // 기본 타일 패딩 제거 (Container에서 패딩 관리)
-                // 1 Depth 메뉴 자체를 탭했을 때의 동작 (ExpansionTile 헤더 영역 전체 탭)
-                // 기본적으로는 하위 메뉴를 펼치는 동작만 합니다.
-                // 만약 1 Depth 메뉴 자체도 특정 페이지로 이동하게 하고 싶다면 여기에 onTap 추가
-                // onTap: () {
-                //   // Navigator.pop(context); // Drawer 닫기
-                //   // _onItemTapped(menuItem.targetPageIndex); // 1 Depth 페이지로 이동 요청
-                // },
 
                 // 하위 메뉴들 (ExpansionTile의 children)
                 children: [
@@ -416,11 +406,11 @@ class MainAppScreenState extends State<MainAppScreen> {
                         // 이미지상 2 Depth 항목은 회색 배경, 들여쓰기된 형태
                         color: Colors.grey[200], // 회색 배경
                         padding: const EdgeInsets.only(
-                          left: 32.0,
+                          left: 32.0, // 왼쪽 들여쓰기 패딩 (1Depth보다 더 들어가도록)
                           right: 16.0,
                           top: 10.0,
                           bottom: 10.0,
-                        ), // 왼쪽 들여쓰기 패딩
+                        ),
                         width: double.infinity, // 가로 전체 채우기 (InkWell에 필요)
                         alignment: Alignment.centerLeft, // 텍스트 왼쪽 정렬
                         child: Text(
@@ -430,13 +420,9 @@ class MainAppScreenState extends State<MainAppScreen> {
                       ),
                     ),
                 ],
-                // Expanded State changed 시 콜백 (펼쳐지거나 닫힐 때)
-                // onExpansionChanged: (bool expanded) {
-                //   debugPrint('${menuItem.title} is expanded: $expanded');
-                // },
               ),
               // 각 1 Depth ExpansionTile 뒤에 구분선 추가 (이미지상 구조)
-              const Divider(height: 1),
+              const Divider(height: 1, thickness: 1), // 구분선 두께 추가하여 더 명확하게
             ],
 
             // 3. 하단 정보 추가 (리스트 끝에 위치)
