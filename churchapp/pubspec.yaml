@@ -16,9 +16,11 @@ dependencies:
 
   # 현재 SDK 버전 (^3.7.2)과 호환되는 webview_flutter 및 플랫폼별 구현체 패키지 버전
   # webview_flutter v4.3.0의 Dependencies 정보 기준 (pub.dev 확인)
-  webview_flutter: ^3.0.4
-  webview_flutter_android: ^2.10.4
-  webview_flutter_wkwebview: ^2.9.5
+  #webview_flutter: ^4.0.0
+  #webview_flutter_android: ^3.1.0
+  #webview_flutter_wkwebview: ^3.1.0
+  google_maps_flutter: ^2.5.0 # 구글 맵 패키지 추가 (최신 버전 확인)
+  url_launcher: ^6.1.11 # URL 실행 패키지 추가 (최신 버전 확인)
 
 dev_dependencies:
   flutter_test:
@@ -29,17 +31,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - img/MainBanner.png
-    - img/BottomBanner.png
-    - img/card_back_1.png
-    - img/card_back_2.png
-    - img/card_back_3.png
-    - img/msg_250316.png
-    - img/bus_schedule.png
-    - img/church_logo.png
-    - img/church_collage_placeholder.png
-    - img/pastor_photo.png
-
+    - img/
     # <<< PDF 파일 폴더 경로 추가 >>>
     - church_weekly/
     

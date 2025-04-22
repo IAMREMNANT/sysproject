@@ -379,7 +379,7 @@ class _WordPageState extends State<WordPage> with TickerProviderStateMixin {
     return Padding(
       padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
       child: Image.asset(
-        'assets/images/world_mission_banner.png', // 실제 경로 확인 및 pubspec.yaml 등록 필요
+        'img/BottomBanner.png', 
         width: double.infinity,
         fit: BoxFit.contain,
         errorBuilder: (context, error, stackTrace) {

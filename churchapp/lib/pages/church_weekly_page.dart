@@ -30,9 +30,9 @@ class _ChurchWeeklyPageState extends State<ChurchWeeklyPage> with TickerProvider
   // 주보 목록 데이터 (예시 - 실제로는 API에서 가져와야 함)
   // PDF 파일은 프로젝트 루트의 church_weekly 폴더에 있다고 가정하고 경로 수정
   final List<WeeklyInfo> _weeklyList = [
-    WeeklyInfo(date: '2025년 4월 6일', title: '[주보]2025년 00주차', sermonTitle: '영적싸움(216) 평강의 하나님', sermonPassage: '데살로니가전서 5:19~28', pdfAssetPath: 'church_weekly/20250406.pdf'),
-    WeeklyInfo(date: '2025년 3월 30일', title: '[주보]2025년 00주차', sermonTitle: '영적싸움(215) 하나님의 뜻', sermonPassage: '데살로니가전서 5:12~18', pdfAssetPath: 'church_weekly/20250330.pdf'),
-    WeeklyInfo(date: '2025년 3월 23일', title: '[주보]2025년 00주차', sermonTitle: '영적싸움(214) 재림과 우리가 할 일', sermonPassage: '데살로니가전서 5:1~11', pdfAssetPath: 'church_weekly/20250323.pdf'),
+    WeeklyInfo(date: '2025년 4월 6일', title: '[주보]2025년 00주차', sermonTitle: '영적싸움(216) 평강의 하나님', sermonPassage: '데살로니가전서 5:19~28', pdfAssetPath: 'church_weekly/church_weekly_250406.pdf'),
+    WeeklyInfo(date: '2025년 3월 30일', title: '[주보]2025년 00주차', sermonTitle: '영적싸움(215) 하나님의 뜻', sermonPassage: '데살로니가전서 5:12~18', pdfAssetPath: 'church_weekly/church_weekly_250330.pdf'),
+    WeeklyInfo(date: '2025년 3월 23일', title: '[주보]2025년 00주차', sermonTitle: '영적싸움(214) 재림과 우리가 할 일', sermonPassage: '데살로니가전서 5:1~11', pdfAssetPath: 'church_weekly/church_weekly_250323.pdf'),
     // TODO: API 연동 시, 실제 주보 목록을 여기에 로드해야 합니다.
   ];
 
@@ -40,11 +40,8 @@ class _ChurchWeeklyPageState extends State<ChurchWeeklyPage> with TickerProvider
 
   // PDF 뷰어 컨트롤러 추가
   final PdfViewerController _pdfViewerController = PdfViewerController();
-  // PDF 뷰어의 전체 페이지는 onDocumentLoaded 콜백에서 가져옴
-  int _totalPages = 0;
-
-  // <<< _pdfViewerKey 변수 삭제 >>>
-  // final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey(); // 이 줄 삭제
+  // <<< Line 44 오류 해결: _totalPages 필드 삭제 >>>
+  // int _totalPages = 0; // 이 줄 삭제
 
   @override
   void initState() {
@@ -81,27 +78,24 @@ class _ChurchWeeklyPageState extends State<ChurchWeeklyPage> with TickerProvider
     );
   }
 
-  // 문서 로드 완료 시 전체 페이지 수 업데이트
+  // 문서 로드 완료 시 전체 페이지 수 업데이트 (필드 삭제로 인해 로직도 삭제)
+  // 만약 다른 목적으로 전체 페이지 수가 필요하다면 필드를 다시 추가하고 사용해야 합니다.
   void _onDocumentLoaded(PdfDocumentLoadedDetails details) {
-     setState(() {
-       _totalPages = details.document.pages.count;
-     });
+     // setState(() { // _totalPages 필드 삭제로 인해 이 로직도 삭제
+     //   _totalPages = details.document.pages.count;
+     // });
+     // print('PDF 로드 완료. 총 페이지: ${details.document.pages.count}'); // 확인용 출력은 가능
   }
 
    // 페이지 변경 시 현재 페이지 업데이트 (상태로 유지하지 않아도 됨)
    void _onPageChanged(PdfPageChangedDetails details) {
      // _pdfViewerController.pageNumber가 자동으로 업데이트됨.
+     // 만약 페이지가 변경될 때마다 어떤 로직을 수행해야 한다면 여기에 추가
    }
 
-
-  // PDF 페이지 이동 함수 (컨트롤러 사용)
-  void _goToPreviousPage() {
-     _pdfViewerController.previousPage();
-  }
-
-  void _goToNextPage() {
-     _pdfViewerController.nextPage();
-  }
+   // PDF 페이지 이동 함수 (컨트롤러 사용) - 이 함수들은 더 이상 호출되지 않으므로 삭제
+   // void _goToPreviousPage() { ... }
+   // void _goToNextPage() { ... }
 
 
   @override
@@ -138,9 +132,9 @@ class _ChurchWeeklyPageState extends State<ChurchWeeklyPage> with TickerProvider
                 // 2-2. PDF 뷰어 영역
                 _buildPdfViewer(currentWeekly.pdfAssetPath),
 
-                // 2-3. PDF 페이지네이션 정보 및 컨트롤
-                _buildPdfPaginationInfo(),
-                _buildPdfPageControls(),
+                // 2-3. PDF 페이지네이션 정보 및 컨트롤 (모두 삭제됨)
+                // _buildPdfPaginationInfo(), // 페이징 정보 삭제
+                // _buildPdfPageControls(), // 페이지 이동 버튼 삭제
 
                 // 2-4. 하단 배너 이미지
                 _buildBottomBanner(),
@@ -153,6 +147,10 @@ class _ChurchWeeklyPageState extends State<ChurchWeeklyPage> with TickerProvider
   }
 
   // --- 위젯 빌더 헬퍼 함수들 ---
+  // _buildWeeklyInfoCard, _buildPdfViewer, _buildBottomBanner 함수만 남기고,
+  // _buildPdfPaginationInfo, _buildPdfPageControls 함수는 삭제되었습니다.
+  // _totalPages 필드를 사용하던 _onDocumentLoaded 콜백 내 로직도 삭제 또는 수정되었습니다.
+
 
   Widget _buildWeeklyInfoCard(WeeklyInfo weekly) {
     return Card(
@@ -175,57 +173,21 @@ class _ChurchWeeklyPageState extends State<ChurchWeeklyPage> with TickerProvider
     );
   }
 
-  // PDF 뷰어 빌더
   Widget _buildPdfViewer(String pdfPath) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.6, // 높이 조절 필요
       child: SfPdfViewer.asset(
         pdfPath,
-        controller: _pdfViewerController, // 컨트롤러 연결 유지
-        // <<< key: _pdfViewerKey, 이 줄 삭제 >>>
+        controller: _pdfViewerController,
         onDocumentLoadFailed: _onDocumentLoadFailed,
-        onDocumentLoaded: _onDocumentLoaded,
-        onPageChanged: _onPageChanged,
+        onDocumentLoaded: _onDocumentLoaded, // 이 콜백 자체를 연결 해제해도 무방
+        onPageChanged: _onPageChanged,       // 이 콜백 자체를 연결 해제해도 무방
       ),
     );
   }
 
-  // PDF 페이지네이션 정보 빌더
-  Widget _buildPdfPaginationInfo() {
-    if (_totalPages <= 0) return const SizedBox.shrink();
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Center(
-        child: Text(
-          '${_pdfViewerController.pageNumber} / $_totalPages', // 컨트롤러에서 페이지 정보 가져옴
-          style: const TextStyle(fontSize: 15),
-        ),
-      ),
-    );
-  }
-
-  // PDF 페이지 이동 버튼 빌더
-  Widget _buildPdfPageControls() {
-     if (_totalPages <= 1) return const SizedBox.shrink();
-
-    final int currentPage = _pdfViewerController.pageNumber; // 컨트롤러에서 페이지 정보 가져옴
-
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        IconButton(
-          icon: const Icon(Icons.arrow_left),
-          onPressed: currentPage > 1 ? _goToPreviousPage : null, // 첫 페이지면 비활성화
-        ),
-        const SizedBox(width: 20),
-        IconButton(
-          icon: const Icon(Icons.arrow_right),
-          onPressed: currentPage < _totalPages ? _goToNextPage : null, // 마지막 페이지면 비활성화
-        ),
-      ],
-    );
-  }
+  // _buildPdfPaginationInfo 함수는 삭제되었습니다.
+  // _buildPdfPageControls 함수는 삭제되었습니다.
 
   // 하단 배너 빌더
   Widget _buildBottomBanner() {
@@ -244,4 +206,5 @@ class _ChurchWeeklyPageState extends State<ChurchWeeklyPage> with TickerProvider
       ),
     );
   }
+
 }

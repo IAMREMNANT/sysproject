@@ -72,12 +72,12 @@ class WorshipTimePage extends StatelessWidget {
         color: Colors.grey[200],
         border: Border(bottom: BorderSide(color: Colors.grey[400]!)),
       ),
+      width: double.infinity,
       child: Text(
         category,
         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         textAlign: TextAlign.center,
       ),
-      width: double.infinity,
     );
   }
 
