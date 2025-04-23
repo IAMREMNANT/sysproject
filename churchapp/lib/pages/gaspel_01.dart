@@ -5,127 +5,30 @@ class Gaspel01Page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // MainAppScreen에서 AppBar를 관리하므로 여기서는 Scaffold의 body만 구성
-    return Scaffold(
-      // appBar: AppBar(title: const Text('복음 메세지')), // AppBar 제거 (MainAppScreen에서 관리)
-      body: SingleChildScrollView( // 내용이 길어질 수 있으므로 스크롤 가능하게 함
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start, // 전체적으로 왼쪽 정렬
-          children: [
-            // 1. 상단 제목, 이미지, 설교 정보 섹션
-            _buildTopInfoSection(),
-            const SizedBox(height: 20), // 섹션 간 간격
-
-            // 2. 탭 바 섹션 (탭 기능은 포함하지 않고 UI만 표시)
-            _buildTabLayoutSection(),
-            const SizedBox(height: 20), // 섹션 간 간격
-
-            // 3. "혹시 이런 문제로 고민하지 않으십니까?" 섹션
-            _buildProblemSection(),
-            const SizedBox(height: 30), // 섹션 간 간격
-
-            // 4. "만일?" 섹션
-            _buildWhatIfSection(),
-            const SizedBox(height: 30), // 섹션 간 간격
-
-            // 5. "당신은 정말 행복하십니까?" 섹션
-            _buildHappinessSection(),
-            const SizedBox(height: 40), // 하단 여백
-          ],
-        ),
-      ),
-    );
-  }
-
-  // --- 1. 상단 제목, 이미지, 설교 정보 섹션 ---
-  Widget _buildTopInfoSection() {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start, // 요소들을 상단에 정렬
+    // 이 위젯은 TabBarView의 자식으로 사용되므로, Scaffold, AppBar, BottomNavigationBar를 포함하지 않습니다.
+    return SingleChildScrollView( // 내용이 길어질 수 있으므로 스크롤 가능하게 함
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start, // 전체적으로 왼쪽 정렬
         children: [
-          // 왼쪽 이미지
-          // 이미지 경로는 'img/salvation.png' (pubspec.yaml 등록 필수)
-          Image.asset(
-            'img/salvation.png', // 이미지 경로
-            width: 120, // 이미지 너비 (조절 가능)
-            fit: BoxFit.cover, // 이미지 비율 유지
-            errorBuilder: (context, error, stackTrace) {
-              // 이미지 로드 실패 시 대체 위젯
-              return Container(
-                width: 120, height: 80, // 이미지 크기와 유사하게
-                color: Colors.grey[200],
-                child: const Icon(Icons.image, color: Colors.grey),
-              );
-            },
-          ),
-          const SizedBox(width: 16), // 이미지와 텍스트 사이 간격
+          // 3. "혹시 이런 문제로 고민하지 않으십니까?" 섹션
+          _buildProblemSection(),
+          const SizedBox(height: 30), // 섹션 간 간격
 
-          // 오른쪽 설교 정보 텍스트
-          Expanded( // 남은 공간을 모두 차지하도록
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start, // 텍스트 왼쪽 정렬
-              children: [
-                // 이 페이지는 "사람의 문제" 페이지이므로, 설교 정보는 이미지와 맞지 않습니다.
-                // 이미지 상 설교 정보는 "구원의 길"에 대한 것이므로,
-                // 이 페이지에서는 해당 정보를 제거하거나 다른 정보로 교체해야 합니다.
-                // 여기서는 이미지 상 설교 정보가 아닌, "사람의 문제"에 맞는 정보를 임의로 넣거나 제거합니다.
-                const Text(
-                  '사람의 문제', // 페이지 제목과 일치
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                // TODO: 이 페이지에 맞는 설교 정보 또는 관련 텍스트로 교체
-                // 예시 (이미지 상 정보 제거):
-                // const Text('본문: ...', style: TextStyle(fontSize: 14, color: Colors.grey)),
-                // const Text('설교자: ...', style: TextStyle(fontSize: 14, color: Colors.grey)),
-              ],
-            ),
-          ),
+          // 4. "만일?" 섹션
+          _buildWhatIfSection(),
+          const SizedBox(height: 30), // 섹션 간 간격
+
+          // 5. "당신은 정말 행복하십니까?" 섹션
+          _buildHappinessSection(),
+          const SizedBox(height: 40), // 하단 여백 (스크롤 하단에 공간 추가)
         ],
       ),
     );
   }
 
-  // --- 2. 탭 바 섹션 (UI만 구현, 기능 없음) ---
-  // 실제 탭 기능은 상위 TabBar/TabBarView에서 구현되어야 합니다.
-  Widget _buildTabLayoutSection() {
-    // 탭처럼 보이도록 버튼이나 컨테이너 배치
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround, // 탭 버튼들을 좌우로 분산
-      children: [
-        // "사람의 문제" 탭 (선택된 상태 UI)
-        Expanded( // 가로 공간 균등 분할
-          child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 12.0),
-            decoration: BoxDecoration(
-              color: Colors.grey[300], // 선택된 탭 배경색 (이미지 참고)
-              border: Border(bottom: BorderSide(color: Colors.black, width: 2.0)), // 하단 밑줄 (이미지 참고)
-            ),
-            child: const Text(
-              '사람의 문제',
-              textAlign: TextAlign.center, // 텍스트 중앙 정렬
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-            ),
-          ),
-        ),
-        // "구원의 길" 탭 (선택되지 않은 상태 UI)
-        Expanded( // 가로 공간 균등 분할
-          child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 12.0),
-            decoration: BoxDecoration(
-              color: Colors.grey[200], // 선택되지 않은 탭 배경색
-              border: Border(bottom: BorderSide(color: Colors.grey[400]!, width: 2.0)), // 하단 밑줄
-            ),
-            child: const Text(
-              '구원의 길',
-              textAlign: TextAlign.center, // 텍스트 중앙 정렬
-              style: TextStyle(fontSize: 15, color: Colors.grey),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
+  // --- 위젯 빌더 헬퍼 함수들 ---
+  // _buildProblemSection, _buildProblemItem, _buildWhatIfSection, _buildHappinessSection 함수는 아래 정의됩니다.
+
 
   // --- 3. "혹시 이런 문제로 고민하지 않으십니까?" 섹션 ---
   Widget _buildProblemSection() {
@@ -170,8 +73,6 @@ class Gaspel01Page extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.grey[100], // 배경색
         borderRadius: BorderRadius.circular(8.0), // 둥근 모서리
-        // 이미지에 보이는 육각형 모양은 CustomPaint 또는 SVG/이미지로 처리 필요
-        // 여기서는 간단한 배경색 + 텍스트 형태로 구현
       ),
       child: Row( // 아이콘(없지만 공간) + 텍스트 내용
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -179,16 +80,14 @@ class Gaspel01Page extends StatelessWidget {
           // 이미지상 왼쪽의 육각형 아이콘 영역 (임시 공간)
           // TODO: 실제 육각형 아이콘 이미지나 CustomPaint로 교체 필요
           Container(
-            width: 40, // 육각형 아이콘 너비와 유사하게 (조절 가능)
-            height: 40, // 육각형 아이콘 높이와 유사하게 (조절 가능)
+            width: 40, // 육각형 아이콘 너비와 유사하게
+            height: 40, // 육각형 아이콘 높이와 유사하게
             margin: const EdgeInsets.only(right: 16.0), // 아이콘과 텍스트 사이 간격
             decoration: BoxDecoration(
                color: Colors.blueAccent, // 육각형 배경색 (예시)
-               shape: BoxShape.circle, // 임시로 원형으로 표시 (육각형 구현 복잡)
-               // 이미지 아이콘 추가 가능
-               // image: DecorationImage(image: AssetImage('assets/icons/problem_icon.png')),
+               shape: BoxShape.circle, // 임시로 원형으로 표시
              ),
-             child: Center( // 번호 또는 아이콘 표시 (이미지에는 번호가 없음)
+             child: const Center( // 번호 또는 아이콘 표시
                 child: Icon(Icons.question_mark, color: Colors.white, size: 24), // 예시 아이콘
               ),
           ),
@@ -228,9 +127,9 @@ class Gaspel01Page extends StatelessWidget {
             child: Text(
               '만일?',
               style: TextStyle(
-                fontSize: 30, // 큰 글씨
+                fontSize: 30,
                 fontWeight: FontWeight.bold,
-                color: Colors.blue, // 파란색 계열 (이미지 참고)
+                color: Colors.blue,
               ),
             ),
           ),
@@ -246,7 +145,6 @@ class Gaspel01Page extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                  // TODO: 이미지 하단에 작은 글씨 텍스트 추가 (필요시)
-                 // const Text('당신은 정말 행복하십니까?', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
               ],
             ),
           ),
@@ -263,34 +161,32 @@ class Gaspel01Page extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center, // 요소들 수직 중앙 정렬
         children: [
           // 텍스트
-          const Expanded( // 텍스트가 남은 공간 모두 차지 (이미지와 비율 조절)
-            flex: 2, // 예시 비율 (조절 가능)
+          const Expanded( // 텍스트가 남은 공간 모두 차지
+            flex: 2,
             child: Text(
               '당신은 정말 행복하십니까?',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Colors.blue, // 파란색 계열 (이미지 참고)
+                color: Colors.blue,
               ),
             ),
           ),
           const SizedBox(width: 16), // 텍스트와 이미지 사이 간격
 
           // 이미지
-          Expanded( // 이미지가 남은 공간 모두 차지 (텍스트와 비율 조절)
-             flex: 1, // 예시 비율 (조절 가능)
+          Expanded( // 이미지가 남은 공간 모두 차지
+             flex: 1,
              child: AspectRatio( // 이미지 비율 유지
-               aspectRatio: 1.0, // 예시 비율 (조절 가능)
+               aspectRatio: 1.0,
                child: Container(
-                 decoration: BoxDecoration(
-                    // TODO: 실제 이미지 경로로 교체 (img/hands_image.png 등)
-                    image: const DecorationImage(
+                 decoration: const BoxDecoration( // const 가능
+                    // TODO: 실제 이미지 경로로 교체
+                    image: DecorationImage(
                        image: AssetImage('img/hands_image_placeholder.png'), // 이미지 경로
-                       fit: BoxFit.contain, // 이미지 전체가 보이도록
+                       fit: BoxFit.contain,
                      ),
-                 ),
-                 // 이미지 없을 때 대체 위젯
-                 child: const Center(child: Icon(Icons.handshake, size: 50, color: Colors.grey)),
+                 ), 
                ),
              ),
            ),
