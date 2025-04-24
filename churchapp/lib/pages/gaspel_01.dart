@@ -1,7 +1,10 @@
+// lib/pages/gaspel_01.dart (사람의 문제 탭 내용)
+
 import 'package:flutter/material.dart';
 
-class Gaspel01Page extends StatelessWidget {
-  const Gaspel01Page({super.key});
+// 클래스 이름 변경 (Gaspel01Page -> Gaspel01Content)
+class Gaspel01Content extends StatelessWidget {
+  const Gaspel01Content({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,7 @@ class Gaspel01Page extends StatelessWidget {
   }
 
   // --- 위젯 빌더 헬퍼 함수들 ---
-  // _buildProblemSection, _buildProblemItem, _buildWhatIfSection, _buildHappinessSection 함수는 아래 정의됩니다.
+  // 이전 Gaspel01Page 코드에서 아래 헬퍼 함수들을 복사하여 여기에 붙여넣습니다.
 
 
   // --- 3. "혹시 이런 문제로 고민하지 않으십니까?" 섹션 ---
@@ -73,6 +76,7 @@ class Gaspel01Page extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.grey[100], // 배경색
         borderRadius: BorderRadius.circular(8.0), // 둥근 모서리
+        // 이미지에 보이는 육각형 모양은 CustomPaint 또는 SVG/이미지로 처리 필요
       ),
       child: Row( // 아이콘(없지만 공간) + 텍스트 내용
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -144,7 +148,6 @@ class Gaspel01Page extends StatelessWidget {
                   style: TextStyle(fontSize: 14, height: 1.6),
                 ),
                 const SizedBox(height: 16),
-                 // TODO: 이미지 하단에 작은 글씨 텍스트 추가 (필요시)
               ],
             ),
           ),
@@ -180,13 +183,15 @@ class Gaspel01Page extends StatelessWidget {
              child: AspectRatio( // 이미지 비율 유지
                aspectRatio: 1.0,
                child: Container(
-                 decoration: const BoxDecoration( // const 가능
-                    // TODO: 실제 이미지 경로로 교체
+                 decoration: const BoxDecoration(
+                    // TODO: 실제 이미지 경로로 교체 (img/hands_image.png 등)
                     image: DecorationImage(
                        image: AssetImage('img/hands_image_placeholder.png'), // 이미지 경로
                        fit: BoxFit.contain,
                      ),
-                 ), 
+                 ),
+                 // 이미지 없을 때 대체 위젯
+                 child: const Center(child: Icon(Icons.handshake, size: 50, color: Colors.grey)),
                ),
              ),
            ),

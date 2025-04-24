@@ -1,11 +1,13 @@
+// lib/pages/gaspel_02.dart (구원의 길 탭 내용)
+
 import 'package:flutter/material.dart';
 
-class Gaspel02Page extends StatelessWidget {
-  const Gaspel02Page({super.key});
+// 클래스 이름 변경 (Gaspel02Page -> Gaspel02Content)
+class Gaspel02Content extends StatelessWidget {
+  const Gaspel02Content({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // <<< Scaffold 위젯 제거 >>>
     // 이 위젯은 TabBarView의 자식으로 사용되므로, Scaffold, AppBar, BottomNavigationBar를 포함하지 않습니다.
     return SingleChildScrollView( // 내용이 길어질 수 있으므로 스크롤 가능하게 함
       child: Column(
@@ -48,10 +50,7 @@ class Gaspel02Page extends StatelessWidget {
   }
 
   // --- 위젯 빌더 헬퍼 함수들 ---
-  // _buildOriginalHumanSection, _buildProblemAroseSection, _buildProblemPoint,
-  // _buildSolutionSection, _buildJesusSaviorSection, _buildChristAnointedSection,
-  // _buildStoryOfLifeSection, _buildFiveCertaintiesSection, _buildChristianFaithLifeSection
-  // 함수는 아래 정의됩니다.
+  // 이전 Gaspel02Page 코드에서 아래 헬퍼 함수들을 복사하여 여기에 붙여넣습니다.
 
 
   // 1. "원래의 인간" 섹션
@@ -61,10 +60,7 @@ class Gaspel02Page extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            '원래의 인간',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
+          const Text('원래의 인간', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           const Divider(height: 20, thickness: 1),
           const Text(
             '만물 가운데 유일하게 하나님의 형상대로 지음 받았으며,\n하나님과 더불어 행복하게 살도록 창조되었습니다. (창1:27-28)\n물고기는 물 속에, 새는 공중에서, 나무는 땅 속에 뿌리를 내리고 살아야 행복하듯\n인간은 하나님과 함께 살아야 진정한 행복을 누리게 됩니다.\n이것이 하나님의 창조 원리입니다.',
@@ -141,10 +137,7 @@ class Gaspel02Page extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            '문제가 생김',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
+          const Text('문제가 생김', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           const Divider(height: 20, thickness: 1),
           Column( // 문제점 항목들을 수직으로 배치
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -160,15 +153,9 @@ class Gaspel02Page extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-        ),
+        Text(title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
         const SizedBox(height: 4),
-        Text(
-          text,
-          style: const TextStyle(fontSize: 14, height: 1.6, color: Colors.grey),
-        ),
+        Text(text, style: const TextStyle(fontSize: 14, height: 1.6, color: Colors.grey)),
         const SizedBox(height: 12),
       ],
     );
@@ -181,10 +168,7 @@ class Gaspel02Page extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            '유일한 해결책 - 예수 그리스도',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
+          const Text('유일한 해결책 - 예수 그리스도', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           const Divider(height: 20, thickness: 1),
           const Text(
             '많은 사람들이 종교, 선행, 돈, 노력, 과학, 철학 등을 통해 행복을 찾고\n하나님을 만나려고 노력하지만 인간 스스로의 죄와 방법으로는 결코 하나님을 만날 수 없습니다.\n복음은 하나님께서 죄의 언약의 몸을 입고 이 땅에 오셔서 우리를 구원하신 것입니다.\n그분이 바로 \'예수 그리스도\'이십니다.',
@@ -249,10 +233,7 @@ class Gaspel02Page extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            '예수 | 구원자 \'이름, 마1:21\'',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
+          const Text('예수 | 구원자 \'이름, 마1:21\'', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           const Divider(height: 20, thickness: 1),
           const Text(
             '나의 죄를 대신하여 십자가에 피 흘려 죽으심으로 해결하심\n제 삼일 만에 부활하심으로 사탄 마귀의 권세를 완전히 멸하심\n곧 인간이 절대 해결할 수 없는 근본 문제를 완전히 해결하셨습니다.\n누구든지 예수 그리스도를 진정으로 믿고 영접하여 구원을 얻습니다.\n(롬10:13, 롬10:9-10, 요1:12, 계3:20, 요일5:1, 요일5:12, 롬8:1-2, 요19:30, 행4:12, 마28:18)',
@@ -285,36 +266,18 @@ class Gaspel02Page extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            '그리스도 | 기름부음 받은 자 \'직분, 마16:16\'',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
+          const Text('그리스도 | 기름부음 받은 자 \'직분, 마16:16\'', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           const Divider(height: 20, thickness: 1),
           // TODO: 만왕의 왕, 참 제사장, 참 선지자 각 역할 설명 텍스트 추가
-          const Text(
-             '이름 뜻 : 그리스도 (헬), 메시아 (히) - 기름부음 받은 자 (직분)',
-             style: TextStyle(fontSize: 15, height: 1.6),
-           ),
+          const Text('이름 뜻 : 그리스도 (헬), 메시아 (히) - 기름부음 받은 자 (직분)', style: TextStyle(fontSize: 15, height: 1.6)),
            const SizedBox(height: 8),
-           const Text(
-             '하나님 만나는 유일한 길 되신 참 선지자 (요14:6, 엡2:1-8)',
-             style: TextStyle(fontSize: 15, height: 1.6),
-           ),
+           const Text('하나님 만나는 유일한 길 되신 참 선지자 (요14:6, 엡2:1-8)', style: TextStyle(fontSize: 15, height: 1.6)),
             const SizedBox(height: 8),
-           const Text(
-             '죄와 저주에서 해방시키신 참 제사장 (롬8:1-2, 벧전2:9)',
-             style: TextStyle(fontSize: 15, height: 1.6),
-           ),
+           const Text('죄와 저주에서 해방시키신 참 제사장 (롬8:1-2, 벧전2:9)', style: TextStyle(fontSize: 15, height: 1.6)),
            const SizedBox(height: 8),
-           const Text(
-             '사탄 마귀의 권세를 꺾으신 만왕의 왕 (요19:30, 요일3:8)',
-             style: TextStyle(fontSize: 15, height: 1.6),
-           ),
+           const Text('사탄 마귀의 권세를 꺾으신 만왕의 왕 (요19:30, 요일3:8)', style: TextStyle(fontSize: 15, height: 1.6)),
            const SizedBox(height: 8),
-           const Text(
-             '이 세 가지 직분을 합쳐 그리스도라고 합니다.',
-             style: TextStyle(fontSize: 15, height: 1.6),
-           ),
+           const Text('이 세 가지 직분을 합쳐 그리스도라고 합니다.', style: TextStyle(fontSize: 15, height: 1.6)),
         ],
       ),
     );
@@ -328,15 +291,9 @@ class Gaspel02Page extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            '생명을 주는 소중한 이야기',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
+          const Text('생명을 주는 소중한 이야기', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           const Divider(height: 20, thickness: 1),
-          const Text(
-            '구원받은 당신은 7가지 축복을 받았습니다.',
-            style: TextStyle(fontSize: 15, height: 1.6),
-          ),
+          const Text('구원받은 당신은 7가지 축복을 받았습니다.', style: TextStyle(fontSize: 15, height: 1.6)),
           const SizedBox(height: 8),
           // 7가지 축복 목록 (번호 매기기 Text로 직접 구현)
           const Column(
@@ -363,10 +320,7 @@ class Gaspel02Page extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            '하나님 자녀의 5가지 확신을 갖길 바랍니다.',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
+          const Text('하나님 자녀의 5가지 확신을 갖길 바랍니다.', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           const Divider(height: 20, thickness: 1),
           // 5가지 확신 목록 (번호 매기기 Text로 직접 구현)
           const Column(
@@ -391,10 +345,7 @@ class Gaspel02Page extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            '그리스도인의 신앙생활',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
+          const Text('그리스도인의 신앙생활', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           const Divider(height: 20, thickness: 1),
           const Text(
             '예수 그리스도를 영접한 당신은 새로운 생명을 얻었습니다.\n하나님을 의지하며 하나님이 기뻐하시는 삶 속으로 인도 받으시기 바랍니다.\n①주일에 한번 시간과 장소를 정해서 성경 공부를 통해 그리스도를 더 알아 가시기 바랍니다.\n② 또한 구원받은 성도로서 교회에 출석하여 예배의 축복을 누리시기 바랍니다.',
